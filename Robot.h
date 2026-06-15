@@ -41,7 +41,6 @@ private:
     std::pair<VectorXd, Vector3d> getAngleViaIK(const Vector3d& _target);
     double IKSolver();
     bool ActiveIK = false;
-    Vector3d target;
-};
+    Vector3d target; // This should be changed. Now it works, but it's better to have target not as data member, but as argument provided by user, or triggered via mouse click.
 
 #endif // ROBOT_H
