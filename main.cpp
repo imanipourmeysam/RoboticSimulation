@@ -8,13 +8,6 @@
 
 using Eigen::MatrixXd;
 
-// Robot class.
-// drawing.
-// fk.
-// ik.
-// capacity sphere.
-
-
 int main(void)
 {
 for (size_t i = 0; i <10; i++) std::cout << "hi\n";
@@ -34,7 +27,7 @@ camera.up       = (Vector3){ 0, 1, 0 };
 camera.fovy     = 45;
 camera.projection = CAMERA_PERSPECTIVE;
 
-//robot chain of 3 joints.
+//robot chain of 2 joints. (users can define the robot arm with different number of joints).
 Robot arm(2);
 std::vector<Joint>& chain = arm.get_chain();
 chain[0] = (Joint){0,0,(Vector3){0,0,1}, 3.0f, RED};
@@ -47,7 +40,7 @@ while (!WindowShouldClose())
 {
     UpdateCamera(&camera, CAMERA_FREE);
 
-    // ---------------- INPUT ----------------
+    // Input key to execute animation via IK solver. (for test and debug).
     if (IsKeyPressed(KEY_I))
     {
         iter = 0;
@@ -63,13 +56,10 @@ while (!WindowShouldClose())
             arm.set_ActiveIK(false);
     }
 
-    // ---------------- DRAW ----------------
+    // Drawing.
     BeginDrawing();
     ClearBackground(RAYWHITE);
-
     BeginMode3D(camera);
-
-    // drawing logic was here.
     base.draw();
     arm.renderRobot();
     EndMode3D();
