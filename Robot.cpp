@@ -176,30 +176,7 @@ std::pair<VectorXd, Vector3d> Robot::getAngleViaIK(const Vector3d& _target)
     return {deltaJointsAngles, deltaTargetEndPos};
 }
 
-//void Robot::animateIK(const Vector3d& target)
-//{
-//    double alpha = 0.5;
-//    double epsilon = 0.05;
-//    size_t max_iter = 1000;
-//
-//    for (size_t iter = 0; iter < max_iter; iter++)
-//    {
-//        auto [deltaTheta, error] = getAngleViaIK(target);
-//
-//        // update joints
-//        for (int i = 0; i < jointCount; i++)
-//        {
-//            double current = chain[i].get_angle();
-//            chain[i].set_angle(current + alpha * deltaTheta(i));
-//        }
-//
-//        std::cout << "iter:" << iter << " - error: " << error.norm() << std::endl;
-//
-//        if (error.norm() < epsilon)
-//            break;
-//    }
-//}
-//
+
 double Robot::IKSolver()
 {
     double alpha = 0.2;
